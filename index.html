@@ -1,0 +1,131 @@
+<html>
+
+<head>
+	<title>Parcel Sandbox</title>
+	<meta charset="UTF-8" />
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<style type="text/css">
+		.panel-heading {
+			color: #fff!important;
+			background-color: #000000a8!important;
+		}
+	
+		.panel-body {
+			background-color: #cccccc45!important;
+		}
+	
+		.panel-body select {
+			border: 1px solid #cccccca1;
+			border-radius: 2px;
+	
+		}
+	
+		select {
+			cursor: pointer;
+		}
+	
+		.selectdiv select {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			/* Add some styling */
+			position: relative;
+			display: block;
+			width: 152px;
+			margin: 5px 0px;
+			padding: 0px 24px;
+			font-size: 16px;
+			line-height: 1.75;
+			color: #333;
+			padding: 5px 10px;
+	
+			background-color: #ffffff;
+			background-image: none;
+	
+			-ms-word-break: normal;
+			word-break: normal;
+		}
+	
+		.selectdiv {
+			position: relative;
+		}
+	
+		.selectdiv:after {
+			content: '\f078';
+			font: normal normal normal 13px/1 FontAwesome;
+			color: #73ddd4;
+			height: 34px;
+			left: 142px;
+			top: 33px;
+			position: absolute;
+			pointer-events: none;
+		}
+	
+		.submitSection input {
+			width: 100%;
+			padding: 10px;
+			background-color: white;
+			border-radius: none;
+			border: 1px solid #ddd;
+			background-color: white;
+			font-size: 20px;
+			cursor: pointer;
+		}
+	
+		.error {
+			color: red;
+		}
+	</style>
+</head>
+
+
+	<div id="app"></div>
+
+	<script src="src/index.js"></script>
+	<body ng-controller="DemoCtrl" ng-app="main">
+		<div class="container oveflow">
+			<div class="row">
+				<div class="col-md-6 QuestionSection">
+					<div class="panel panel-default" ng-repeat="item in QuestionsList">
+						<div class="panel-heading">{{item.question}}</div>
+						<form name="myForm">
+							<div class="panel-body selectdiv">
+								<select name="service_id" ng-model="selectedOption" ng-options="item as item.options for item in item.dropdown" ng-change="changedValue(selectedOption)"
+								 required>
+								<option selected value="">Select Service</option> 
+							</select>
+								<span class="error" ng-show="myForm.service_id.$dirty && myForm.service_id.$invalid">Select service</span>
+							</div>
+	
+						</form>
+					</div>
+					<div class="col-md-12 submitSection">
+						<div class="row">
+							<div class="col-md-6">
+								<input type="button" ng-disabled="btnSaveDisabled" ng-click="save()" value="Submit">
+							</div>
+							<div class="col-md-6">
+								<input type="button" ng-disabled="btnResetDisabled" ng-click="resetForm()" value="Clear Values">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div id="chart_div"></div>
+				</div>
+	
+			</div>
+	
+		</div>
+	
+</body>
+
+</html>

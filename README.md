@@ -1,2 +1,0 @@
-# angularBarWork
-Created with CodeSandbox
